@@ -1,86 +1,112 @@
-import React from 'react';
+import React, { useState } from 'react';
+import logo from "../assets/logo.png";
+import { Link, NavLink } from 'react-router';
+
+
+
+
 
 const Navbar = () => {
-    return (
-      <div>
-        <div className="navbar bg-base-100 shadow-sm">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost lg:hidden"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  {" "}
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />{" "}
-                </svg>
-              </div>
-              <ul
-                tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <a>Item 1</a>
-                </li>
-                <li>
-                  <a>Parent</a>
-                  <ul className="p-2">
-                    <li>
-                      <a>Submenu 1</a>
-                    </li>
-                    <li>
-                      <a>Submenu 2</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>Item 3</a>
-                </li>
-              </ul>
-            </div>
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+  const [isOpen, setIsOpen] = useState(false);
+
+  
+
+
+
+  
+  return (
+    <div>
+      <nav className="bg-base-100 shadow-sm w-full px-4 md:px-8">
+        <div className="flex items-center justify-between w-full py-3">
+          {/* left Logo text*/}
+          <div className="flex items-center gap-2">
+            <img className="w-12 h-12" src={logo} alt="Logo" />
+            <h2 className="text-2xl font-bold text-green-600">Krishi Link</h2>
           </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+
+          {/* middle menu */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <ul className="flex gap-8 font-medium">
               <li>
-                <a>Item 1</a>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "text-green-500 font-semibold" : ""
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
-                <details>
-                  <summary>Parent</summary>
-                  <ul className="p-2">
-                    <li>
-                      <a>Submenu 1</a>
-                    </li>
-                    <li>
-                      <a>Submenu 2</a>
-                    </li>
-                  </ul>
-                </details>
-              </li>
-              <li>
-                <a>Item 3</a>
+                <NavLink
+                  to="/all-crops"
+                  className={({ isActive }) =>
+                    isActive ? "text-green-500 font-semibold" : ""
+                  }
+                >
+                  All Crops
+                </NavLink>
               </li>
             </ul>
           </div>
-          <div className="navbar-end">
-            <a className="btn">Button</a>
+
+          {/* right Auth btn */}
+          <div className="hidden md:flex gap-3">
+            <Link to="/login">
+              <button className="btn">Log in</button>
+            </Link>
+            <Link to="/register">
+              <button className="btn bg-[#C1E899]">Sign up</button>
+            </Link>
           </div>
+
+          {/*  menu for mobile */}
+          <button
+            className="md:hidden text-2xl text-green-600"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            ☰
+          </button>
         </div>
-      </div>
-    );
+
+        {/* mobile dropdown menu */}
+        {isOpen && (
+          <div className="md:hidden mt-3 bg-white shadow-md rounded-lg p-4 space-y-3">
+            <ul className="flex flex-col gap-3">
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "text-green-500 font-semibold" : ""
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/all-crops"
+                  className={({ isActive }) =>
+                    isActive ? "text-green-500 font-semibold" : ""
+                  }
+                >
+                  All Crops
+                </NavLink>
+              </li>
+            </ul>
+            <div className="flex gap-3 pt-2">
+              <Link to="/login" className="btn w-1/2">
+                Login
+              </Link>
+              <Link to="/register" className="btn bg-[#C1E899] w-1/2">
+                Register
+              </Link>
+            </div>
+          </div>
+        )}
+      </nav>
+    </div>
+  );
 };
 
 export default Navbar;

@@ -1,14 +1,18 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { Outlet } from 'react-router';
 
 const HomeLayouts = () => {
     return (
-        <div>
-            <nav>
-                <Navbar></Navbar>
-            </nav>
-            
-        </div>
+      <div>
+        <header>
+          <Navbar></Navbar>
+        </header>
+
+        <main>
+          <Outlet></Outlet>
+        </main>
+      </div>
     );
 };
 
