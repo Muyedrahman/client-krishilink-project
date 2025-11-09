@@ -8,16 +8,29 @@ const Register = () => {
   const handleRegister = (e) =>{
     e.preventDefault();
 
-   const email = e.target.email?.value;
-   const password = e.target.password?.value;
-   const name = e.target.name?.value;
-   const photo = e.target.photo?.value;
-
-
+    const email = e.target.email?.value;
+    const password = e.target.password?.value;
+    const name = e.target.name?.value;
+    const photo = e.target.photo?.value;
 
     console.log("Register function enter", { name, email, photo, password });
-// createUserWithEmailAndPasswordFunc
-        createUserWithEmailAndPassword(auth,email, password)
+
+    // password validation
+    if (password.length < 6) {
+      toast.error("Password should be at least 6 characters");
+      return;
+    }
+     if (!/[A-Z]/.test(password)) {
+       toast.error("Password must contain at least one uppercase letter");
+       return;
+     }
+     if (!/[a-z]/.test(password)) {
+       toast.error("Password must contain at least one lowercase letter");
+       return;
+     }
+
+    // createUserWithEmailAndPasswordFunc
+    createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
         console.log(res);
         // 2 Updat Profile
@@ -27,7 +40,7 @@ const Register = () => {
       })
       .catch((e) => {
         console.log(e);
-        toast.error("alrady this Email used");
+        toast.error(e.message);
       });
   };
 
