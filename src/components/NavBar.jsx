@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from "../assets/logo.png";
 import { Link, NavLink } from 'react-router';
+import MyLink from './MyLink';
 
 
 
@@ -20,7 +21,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between w-full py-3">
           {/* left Logo text*/}
           <div className="flex items-center gap-2">
-            <img className="w-12 h-12" src={logo} alt="Logo" />
+            <img className="w-12 h-12" src={logo} alt="" />
             <h2 className="text-2xl font-bold text-green-600">Krishi Link</h2>
           </div>
 
@@ -28,24 +29,15 @@ const Navbar = () => {
           <div className="hidden md:flex flex-1 justify-center">
             <ul className="flex gap-8 font-medium">
               <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? "text-green-500 font-semibold" : ""
-                  }
-                >
+                <MyLink to={"/"} className="">
                   Home
-                </NavLink>
+                </MyLink>
               </li>
+
               <li>
-                <NavLink
-                  to="/all-crops"
-                  className={({ isActive }) =>
-                    isActive ? "text-green-500 font-semibold" : ""
-                  }
-                >
+                <MyLink to={"/all-crops"} className="">
                   All Crops
-                </NavLink>
+                </MyLink>
               </li>
             </ul>
           </div>
@@ -56,7 +48,7 @@ const Navbar = () => {
               <button className="btn">Log in</button>
             </Link>
             <Link to="/register">
-              <button className="btn bg-[#C1E899]">Sign up</button>
+              <button className="btn bg-[#C1E899]">Register</button>
             </Link>
           </div>
 

@@ -3,6 +3,8 @@ import HomeLayouts from "../layouts/HomeLayouts";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/Error/NotFound";
 import AllCropsPage from "../pages/AllCrops/AllCropsPage";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 
 
@@ -14,13 +16,20 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "all-crops",
-        element: <AllCropsPage />
+        element: <AllCropsPage />,
       },
-      
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
     ],
   },
 
