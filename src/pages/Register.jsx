@@ -1,9 +1,14 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+
+const googleProvider = new GoogleAuthProvider();
+
+
+
 
 const Register = () => {
 
@@ -52,6 +57,21 @@ const Register = () => {
         toast.error(e.message);
       });
   };
+
+  // google
+  const handleGoogleRegister = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        console.log(res);
+
+        toast.success("Google Login Success");
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error(e.message);
+      });
+  };
+  
 
 
 
@@ -108,7 +128,6 @@ const Register = () => {
                     onClick={() => setShow(!show)}
                     className="absolute right-[35px] top-[35px] cursor-pointer  z-50"
                   >
-                   
                     {show ? <FaEye /> : <FaEyeSlash />}
                   </span>
                 </div>
@@ -116,17 +135,17 @@ const Register = () => {
                   <a className="link link-hover">Forgot password?</a>
                 </div>
                 {/* Register Button 5  */}
-                <button to="/" className="btn btn-primary w-full">
+                <button to="/" className="btn btn-success w-full">
                   Register
                 </button>
 
                 {/* Google Login 6 type="submit"*/}
                 <button
                   type="button"
-                  //   onClick={handleGoogleSigning}
+                  onClick={handleGoogleRegister}
                   className="btn btn-outline w-full"
                 >
-                  {/*  <FaGoogle /> */}
+                   <FaGoogle />
                   Continue with Google
                 </button>
 

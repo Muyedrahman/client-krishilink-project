@@ -1,9 +1,13 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
+
+
+
+const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
      const [show, setShow] = useState(false);
@@ -30,6 +34,19 @@ const Login = () => {
              toast.error("Login failed");
            });
        };
+
+     const handleGoogleSignin = () => {
+          signInWithPopup(auth, googleProvider)
+            .then((res) => {
+              console.log(res);
+
+              toast.success("Google Login Success");
+            })
+            .catch((e) => {
+              console.log(e);
+              toast.error(e.message);
+            });
+        };
 
 
 
@@ -78,17 +95,17 @@ const Login = () => {
                   <a className="link link-hover">Forgot password?</a>
                 </div>
                 {/*  Login Button 4 */}
-                <button to="/" className="btn btn-primary w-full">
+                <button to="/" className="btn btn-success w-full">
                   Login
                 </button>
 
                 {/* Google Login 5 type="submit"*/}
                 <button
                   type="button"
-                  //   onClick={handleGoogleSigning}
-                  className="btn btn-outline w-full"
+                  onClick={handleGoogleSignin}
+                  className="btn btn-outline w-full cursor-pointer"
                 >
-                  {/*  <FaGoogle /> */}
+                  <FaGoogle />
                   Continue with Google
                 </button>
 
