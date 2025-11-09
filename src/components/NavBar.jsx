@@ -22,7 +22,7 @@ const Navbar = () => {
           {/* left Logo text*/}
           <div className="flex items-center gap-2">
             <img className="w-12 h-12" src={logo} alt="" />
-            <h2 className="text-2xl font-bold text-green-600">Krishi Link</h2>
+            <h2 className="text-2xl font-bold text-green-600">Krishi Network</h2>
           </div>
 
           {/* middle menu */}
