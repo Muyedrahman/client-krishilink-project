@@ -1,10 +1,37 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
 import { Link } from 'react-router';
+import { auth } from '../firebase/firebase.config';
+import { toast } from 'react-toastify';
 
 const Register = () => {
-  const handleRegister = () =>{
+  const handleRegister = (e) =>{
+    e.preventDefault();
 
-  }
+   const email = e.target.email?.value;
+   const password = e.target.password?.value;
+   const name = e.target.name?.value;
+   const photo = e.target.photo?.value;
+
+
+
+    console.log("Register function enter", { name, email, photo, password });
+// createUserWithEmailAndPasswordFunc
+        createUserWithEmailAndPassword(auth,email, password)
+      .then((res) => {
+        console.log(res);
+        // 2 Updat Profile
+        toast.success("Register Successfully !");
+        // setUser(res.user);
+        // navigate("/");
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error("alrady this Email used");
+      });
+  };
+
+
 
 
 
@@ -19,7 +46,7 @@ const Register = () => {
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
-              <form className="space-y-5">
+              <form onSubmit={handleRegister} className="space-y-5">
                 {/* Name 1*/}
                 <label className=" font-bold">Name</label>
                 <input
@@ -37,8 +64,8 @@ const Register = () => {
                   className="input label"
                   placeholder="Email"
                 />
-                {/* Photo URL 3*/}
-                <label className="font-bold">Photo URL</label>
+                {/* Photo 3*/}
+                <label className="font-bold">Photo </label>  
                 <input
                   type="url"
                   name="photo"
@@ -64,7 +91,7 @@ const Register = () => {
                 </div>
                 {/* Register Button 5 to="/" */}
                 <button className="btn btn-primary w-full">
-                  Signup Register
+                  Register    
                 </button>
 
                 {/* Google Login 6 type="submit"*/}
@@ -81,7 +108,7 @@ const Register = () => {
                 <p className="text-center ">
                   You have an account?
                   <Link
-                    // to="/login"
+                    to="/login"
                     className="text-blue-600 font-semibold hover:underline"
                   >
                     Login

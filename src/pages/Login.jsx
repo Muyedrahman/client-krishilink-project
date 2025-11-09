@@ -62,13 +62,13 @@ const Login = () => {
 
               {/* Forgot Password */}
               <div className="text-right">
-                <button
-                  type="button"
+                <div
+                  type=""
                   onClick={handleForgotPassword}
                   className="text-sm text-blue-600 hover:underline"
                 >
                   Forgot Password?
-                </button>
+                </div>
               </div>
 
               {/* Login Button */}
