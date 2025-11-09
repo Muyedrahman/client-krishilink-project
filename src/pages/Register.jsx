@@ -54,7 +54,30 @@ const Register = () => {
       })
       .catch((e) => {
         console.log(e);
-        toast.error(e.message);
+        console.log(e.code);
+        if (e.code === "auth/email-already-in-use") {
+          toast.error("This email is already registered.");
+        } else if (e.code === "auth/invalid-email") {
+          toast.error("Invalid email address.");
+        } else if (e.code === "auth/weak-password") {
+          toast.error("Password should be at least 6 characters long.");
+        } else if (e.code === "auth/missing-email") {
+          toast.error("Please enter your email.");
+        } else if (e.code === "auth/missing-password") {
+          toast.error("Please enter your password.");
+        } else if (e.code === "auth/operation-not-allowed") {
+          toast.error("Email/password sign-in is not enabled in Firebase.");
+        } else if (e.code === "auth/network-request-failed") {
+          toast.error("Network error. Please check your internet connection.");
+        } else if (e.code === "auth/too-many-requests") {
+          toast.error("Too many attempts. Please try again later.");
+        } else if (e.code === "auth/internal-error") {
+          toast.error("An internal error occurred. Please try again.");
+        } else {
+          toast.error("Something went wrong: " + e.message);
+        }
+        
+
       });
   };
 
