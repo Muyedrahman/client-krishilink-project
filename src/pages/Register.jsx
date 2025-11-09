@@ -1,10 +1,19 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
+
+   const [show, setShow] = useState(false);
+
+  const navigate = useNavigate();
+
+
+
+
   const handleRegister = (e) =>{
     e.preventDefault();
 
@@ -36,7 +45,7 @@ const Register = () => {
         // 2 Updat Profile
         toast.success("Register Successfully !");
         // setUser(res.user);
-        // navigate("/");
+        navigate("/");
       })
       .catch((e) => {
         console.log(e);
@@ -78,7 +87,7 @@ const Register = () => {
                   placeholder="Email"
                 />
                 {/* Photo 3*/}
-                <label className="font-bold">Photo </label>  
+                <label className="font-bold">Photo </label>
                 <input
                   type="url"
                   name="photo"
@@ -90,21 +99,25 @@ const Register = () => {
                 <div className="relative">
                   <label className=" font-bold">Password</label>
                   <input
+                    type={show ? "text" : "password"}
                     name="password"
                     className="input label"
-                    placeholder="Password"
+                    placeholder="******"
                   />
-                  {/* <span className="absolute right-[30px] top-[35px] cursor-pointer  z-50">
-                    <FaEye />
+                  <span
+                    onClick={() => setShow(!show)}
+                    className="absolute right-[35px] top-[35px] cursor-pointer  z-50"
+                  >
+                   
                     {show ? <FaEye /> : <FaEyeSlash />}
-                  </span> */}
+                  </span>
                 </div>
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>
-                {/* Register Button 5 to="/" */}
-                <button className="btn btn-primary w-full">
-                  Register    
+                {/* Register Button 5  */}
+                <button to="/" className="btn btn-primary w-full">
+                  Register
                 </button>
 
                 {/* Google Login 6 type="submit"*/}
