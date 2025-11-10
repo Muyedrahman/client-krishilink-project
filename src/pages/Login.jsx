@@ -1,75 +1,123 @@
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import React, { useState } from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext, useRef, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../context/AuthContext';
 
 
 
-const googleProvider = new GoogleAuthProvider();
+
 
 const Login = () => {
-     const [show, setShow] = useState(false);
+  // const [user, setUser] = useState(null);
+  const [show, setShow] = useState(false);
+  const {
+    signInWithEmailAndPasswordFunc,
+    signInWithEmailFunc,
+    logOutFunc,
+    sendPassResetEmailFunc,
+    user,
+    setUser,
+  } = useContext(AuthContext);
 
-     const navigate = useNavigate();
+  const emailRef = useRef(null);
 
+  // const [email, setEmail] = useState(null);
 
+  // const navigate = useNavigate();
 
-       const handleLogin = (e) => {
-         e.preventDefault();
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-         const email = e.target.email?.value;
-         const password = e.target.password?.value;
-         // console.log({ email, password });
+    const email = e.target.email?.value;
+    const password = e.target.password?.value;
+    console.log({ email, password });
+    signInWithEmailAndPasswordFunc(email, password)
+      .then((res) => {
+        console.log(res);
+        toast.success("Login Success");
+        setUser(res.user);
+        //  navigate("/");
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error("Login failed");
+      });
+  };
 
-         signInWithEmailAndPassword(auth, email, password)
-           .then((res) => {
-             console.log(res);
-             toast.success("Login Success");
-             navigate("/");
-           })
-           .catch((e) => {
-             console.log(e);
-             toast.error("Login failed");
-           });
-       };
+  const handleGoogleSignin = () => {
+    signInWithEmailFunc()
+      .then((res) => {
+        console.log(res);
 
-     const handleGoogleSignin = () => {
-          signInWithPopup(auth, googleProvider)
-            .then((res) => {
-              console.log(res);
+        toast.success("Google Login Success");
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error(e.message);
+      });
+  };
+  // logOutFunc profile ar
+  const handleSignout = () => {
+    logOutFunc()
+      .then(() => {
+        toast.success("Logout Succesful");
+        setUser(null);
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
 
-              toast.success("Google Login Success");
-            })
-            .catch((e) => {
-              console.log(e);
-              toast.error(e.message);
-            });
-        };
+  // handleForgotPassword
+  const handleForgotPassword = () => {
+    //  e.preventDefault();
+    // console.log();
+    const email = emailRef.current.value;
+    sendPassResetEmailFunc(email)
+      .then((res) => {
+        toast.success("Check your email to reset password");
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
 
-
-
-
-
-
-    return (
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register now!</h1>
-            <p className="py-6 text-orange-500 font-semibold">
-              Farmer Registration
-            </p>
-          </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <div className="card-body">
+  return (
+    <div className="hero bg-base-200 min-h-screen">
+      <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="text-center lg:text-left">
+          <h1 className="text-5xl font-bold">Register now!</h1>
+          <p className="py-6 text-orange-500 font-semibold">
+            Farmer Registration
+          </p>
+        </div>
+        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <div className="card-body">
+            {user ? (
+              <div className="text-center space-y-3">
+                <img
+                  src={user?.photoURL || "https://vai.placeholder.com/88"}
+                  alt=""
+                  className="h-20 w-20 rounded-full mx-auto"
+                />
+                <h2 className="text-xl">{user?.displayName}</h2>
+                <button onClick={handleSignout} className="btn">
+                  Logout
+                </button>
+              </div>
+            ) : (
               <form onSubmit={handleLogin} className="space-y-5">
                 {/* Email 1*/}
                 <label className=" font-bold">Email</label>
                 <input
                   type="email"
                   name="email"
+                  ref={emailRef}
+                  // value={email}
+                  // onChange={(e) => setEmail(e.target.value)}
                   className="input label"
                   placeholder="Email"
                 />
@@ -91,13 +139,18 @@ const Login = () => {
                   </span>
                 </div>
                 {/* Forgot password 3 */}
-                <div>
-                  <a className="link link-hover">Forgot password?</a>
-                </div>
-                {/*  Login Button 4 */}
-                <button to="/" className="btn btn-success w-full">
-                  Login
+                {/* <div> */}
+                <button
+                  onClick={handleForgotPassword}
+                  className="hover:underline cursor-pointer"
+                  type="button"
+                >
+                  Forgot password?
                 </button>
+                {/* <a className="link link-hover">Forgot password?</a> */}
+                {/* </div> */}
+                {/*  Login Button 4  to="/"*/}
+                <button className="btn btn-success w-full">Login</button>
 
                 {/* Google Login 5 type="submit"*/}
                 <button
@@ -120,12 +173,12 @@ const Login = () => {
                   </Link>
                 </p>
               </form>
-            </div>
+            )}
           </div>
         </div>
       </div>
-    );
-
+    </div>
+  );
 };
 
 export default Login;

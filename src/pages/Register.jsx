@@ -1,9 +1,10 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import React, { useState } from 'react';
+import { GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.config';
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../context/AuthContext';
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -13,6 +14,7 @@ const googleProvider = new GoogleAuthProvider();
 const Register = () => {
 
    const [show, setShow] = useState(false);
+    const { createUserWithEmailAndPasswordFunc } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -24,10 +26,17 @@ const Register = () => {
 
     const email = e.target.email?.value;
     const password = e.target.password?.value;
-    const name = e.target.name?.value;
-    const photo = e.target.photo?.value;
+    const displayName = e.target.name?.value;
+    const photoURL = e.target.photo?.value;
 
-    console.log("Register function enter", { name, email, photo, password });
+   
+
+    console.log("Register function enter", {
+      displayName,
+      email,
+      photoURL,
+      password,
+    });
 
     // password validation
     if (password.length < 6) {
@@ -44,41 +53,52 @@ const Register = () => {
      }
 
     // createUserWithEmailAndPasswordFunc
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        console.log(res);
-        // 2 Updat Profile
-        toast.success("Register Successfully !");
-        // setUser(res.user);
-        navigate("/");
-      })
-      .catch((e) => {
-        console.log(e);
-        console.log(e.code);
-        if (e.code === "auth/email-already-in-use") {
-          toast.error("This email is already registered.");
-        } else if (e.code === "auth/invalid-email") {
-          toast.error("Invalid email address.");
-        } else if (e.code === "auth/weak-password") {
-          toast.error("Password should be at least 6 characters long.");
-        } else if (e.code === "auth/missing-email") {
-          toast.error("Please enter your email.");
-        } else if (e.code === "auth/missing-password") {
-          toast.error("Please enter your password.");
-        } else if (e.code === "auth/operation-not-allowed") {
-          toast.error("Email/password sign-in is not enabled in Firebase.");
-        } else if (e.code === "auth/network-request-failed") {
-          toast.error("Network error. Please check your internet connection.");
-        } else if (e.code === "auth/too-many-requests") {
-          toast.error("Too many attempts. Please try again later.");
-        } else if (e.code === "auth/internal-error") {
-          toast.error("An internal error occurred. Please try again.");
-        } else {
-          toast.error("Something went wrong: " + e.message);
-        }
-        
-
-      });
+     createUserWithEmailAndPasswordFunc(email, password)
+           .then((res) => {
+             // 2 Updat Profile
+             updateProfile(res.user, {
+               displayName,
+               photoURL,
+             })
+             .then((res) => {
+              console.log(res);
+              toast.success("Registe succesful");
+             })
+             .catch((e) =>{
+              toast.error(e.message);
+             })
+            //  console.log(res);
+            //  toast.success("Register Successfully !");
+             // setUser(res.user);
+             navigate("/");
+           })
+          .catch((e) => {
+            console.log(e);
+            console.log(e.code);
+            if (e.code === "auth/email-already-in-use") {
+              toast.error("This email is already registered.");
+            } else if (e.code === "auth/invalid-email") {
+              toast.error("Invalid email address.");
+            } else if (e.code === "auth/weak-password") {
+              toast.error("Password should be at least 6 characters long.");
+            } else if (e.code === "auth/missing-email") {
+              toast.error("Please enter your email.");
+            } else if (e.code === "auth/missing-password") {
+              toast.error("Please enter your password.");
+            } else if (e.code === "auth/operation-not-allowed") {
+              toast.error("Email/password sign-in is not enabled in Firebase.");
+            } else if (e.code === "auth/network-request-failed") {
+              toast.error(
+                "Network error. Please check your internet connection."
+              );
+            } else if (e.code === "auth/too-many-requests") {
+              toast.error("Too many attempts. Please try again later.");
+            } else if (e.code === "auth/internal-error") {
+              toast.error("An internal error occurred. Please try again.");
+            } else {
+              toast.error("Something went wrong: " + e.message);
+            }
+          });
   };
 
   // google
@@ -112,6 +132,7 @@ const Register = () => {
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
               <form onSubmit={handleRegister} className="space-y-5">
+                
                 {/* Name 1*/}
                 <label className=" font-bold">Name</label>
                 <input
@@ -168,7 +189,7 @@ const Register = () => {
                   onClick={handleGoogleRegister}
                   className="btn btn-outline w-full"
                 >
-                   <FaGoogle />
+                  <FaGoogle />
                   Continue with Google
                 </button>
 
