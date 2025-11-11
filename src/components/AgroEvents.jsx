@@ -7,7 +7,7 @@ const AgroEvents = () => {
         {/* Title */}
         <h2 className="text-3xl font-bold text-center mb-10 flex justify-center items-center gap-2">
           <RiCalendarEventLine className="text-green-600 text-4xl" />
-          Upcoming Agro Events & Workshops
+          <i className="text-yellow-500">Upcoming Agro Events & Workshops</i>
         </h2>
 
         {/* Events */}

@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="">
             <img className="size-10 rounded-full" src={logo} alt="" />
             <h6 className="text-2xl font-bold text-green-600">
-              Krishi Network
+              <i className="text-yellow-500">Krishi</i> Network
             </h6>
           </div>
           <h6 className="footer-title">Service</h6>

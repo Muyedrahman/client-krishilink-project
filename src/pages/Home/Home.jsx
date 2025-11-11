@@ -4,6 +4,7 @@ import HowItWorks from '../../components/HowItWorks';
 import AgroNews from '../../components/AgroNews';
 import FeaturedFarmers from '../../components/FeaturedFarmers';
 import AgroEvents from '../../components/AgroEvents';
+import LatestCrops from '../../components/LatestCrops';
 
 const Home = () => {
     return (
@@ -11,9 +12,10 @@ const Home = () => {
         <section>
           <HeroSlider />
         </section>
-        {/* <section>
-          Latest Crops
-        </section> */}
+        <section>
+          <LatestCrops />
+        </section>
+
         <HowItWorks />
         <section>
           <AgroNews />

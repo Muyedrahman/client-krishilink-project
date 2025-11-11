@@ -23,13 +23,15 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: () => fetch("http://localhost:3000/crops"),
       },
       {
         path: "/all-crops",
         element: <AllCropsPage />,
+        loader: () => fetch("http://localhost:3000/crops"),
       },
       // {
-      //   path: "/crop/:id", 
+      //   path: "/crop/:id",
       //   element: <CropDetails /> Component bani-ni
       // },
       {

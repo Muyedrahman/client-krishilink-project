@@ -13,7 +13,7 @@ const HowItWorks = () => {
       <div className="py-16 bg-base-100">
         <h2 className="text-3xl font-bold text-center mb-10 flex justify-center items-center gap-2">
           <RiLeafLine className="text-green-600 text-4xl" />
-          How KrishiLink Works
+          <i className='text-yellow-500'> How KrishiLink Works</i>
         </h2>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 px-6">

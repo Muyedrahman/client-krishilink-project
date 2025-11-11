@@ -7,7 +7,7 @@ const AgroNews = () => {
         {/* Title */}
         <h2 className="text-3xl font-bold text-center mb-10 flex justify-center items-center gap-2">
           <RiArticleLine className="text-green-600 text-4xl" />
-          Latest Agro News & Blogs
+          <i className="text-yellow-500">Latest Agro News & Blogs</i>
         </h2>
 
         {/* News Cards */}
@@ -15,17 +15,17 @@ const AgroNews = () => {
           {/* Blog 1 */}
           <div className="card bg-white p-6 shadow-md hover:shadow-lg rounded-xl text-center flex-1">
             <img
-              src="https://i.ibb.co.com/d4XQmchz/cow.jpg"
+              src="https://i.ibb.co.com/NnQnyr8g/Wheat5.jpg"
               alt="Cow Farm img"
               className="rounded-lg mb-4 h-48 w-full object-cover"
             />
             <RiSeedlingLine className="text-green-600 text-4xl mx-auto mb-2" />
             <h3 className="font-semibold text-lg mb-2">
-              Borishal Cow Farm Expands with Modern Practices
+              Farmers Wheat Harvest Success
             </h3>
             <p className="text-sm text-gray-600 mb-3">
-              Discover how cow farmers in Borishal are improving productivity
-              and sustainability using innovative farm management techniques.
+              Wheat is a grass grown for its cereal grains, a global staple food
+              used to make products
             </p>
             <button className="text-green-600 font-medium hover:underline">
               Read More..
@@ -51,7 +51,6 @@ const AgroNews = () => {
             </button>
           </div>
 
-          {/* Blog 3 */}
           <div className="card bg-white p-6 shadow-md hover:shadow-lg rounded-xl text-center flex-1">
             <img
               src="https://i.ibb.co.com/W4s8FM50/ai-image.jpg"

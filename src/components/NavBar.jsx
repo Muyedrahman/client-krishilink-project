@@ -41,9 +41,12 @@ const Navbar = () => {
     <nav className="bg-white shadow-md px-4 md:px-8 py-3">
       <div className="flex items-center justify-between">
         {/* logo */}
-        <div className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="w-12 h-12" />
-          <h1 className="text-2xl font-bold text-green-600">Krishi Network</h1>
+        <div className="flex items-center">
+          {/* */}
+          <img src={logo} alt="Logo" className="h-20 w-20" />
+          <h1 className="text-2xl font-bold text-green-600">
+            <i className='text-yellow-700'>Krishi</i> Network
+          </h1>
         </div>
 
         <ul className="hidden md:flex gap-6">
@@ -68,14 +71,15 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-        
           {user && (
             <>
               <li>
                 <NavLink
                   to="/profile"
                   className={({ isActive }) =>
-                    isActive ? "text-green-500 font-semibold" : "hover:text-green-600"
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-600"
                   }
                 >
                   Profile
@@ -85,7 +89,9 @@ const Navbar = () => {
                 <NavLink
                   to="/add-crop"
                   className={({ isActive }) =>
-                    isActive ? "text-green-500 font-semibold" : "hover:text-green-600"
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-600"
                   }
                 >
                   Add Crop
@@ -95,7 +101,9 @@ const Navbar = () => {
                 <NavLink
                   to="/my-posts"
                   className={({ isActive }) =>
-                    isActive ? "text-green-500 font-semibold" : "hover:text-green-600"
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-600"
                   }
                 >
                   My Posts
@@ -105,7 +113,9 @@ const Navbar = () => {
                 <NavLink
                   to="/my-interests"
                   className={({ isActive }) =>
-                    isActive ? "text-green-500 font-semibold" : "hover:text-green-600"
+                    isActive
+                      ? "text-green-500 font-semibold"
+                      : "hover:text-green-600"
                   }
                 >
                   My Interests
@@ -114,7 +124,6 @@ const Navbar = () => {
             </>
           )}
         </ul>
-  
 
         <div className="hidden md:flex gap-3">
           {loading ? (
