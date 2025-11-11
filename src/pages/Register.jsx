@@ -14,7 +14,8 @@ const googleProvider = new GoogleAuthProvider();
 const Register = () => {
 
    const [show, setShow] = useState(false);
-    const { createUserWithEmailAndPasswordFunc } = useContext(AuthContext);
+    const { createUserWithEmailAndPasswordFunc, updateProfileFunc, setLoading} =
+      useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -56,21 +57,19 @@ const Register = () => {
      createUserWithEmailAndPasswordFunc(email, password)
            .then((res) => {
              // 2 Updat Profile
-             updateProfile(res.user, {
-               displayName,
-               photoURL,
-             })
-             .then((res) => {
-              console.log(res);
-              toast.success("Registe succesful");
-             })
-             .catch((e) =>{
-              toast.error(e.message);
-             })
-            //  console.log(res);
-            //  toast.success("Register Successfully !");
-             // setUser(res.user);
-             navigate("/");
+             updateProfileFunc(displayName, photoURL)
+               .then(() => {
+                 console.log(res);
+                 //  setLoading(false);
+                 toast.success("Registe succesful");
+                 navigate("/");
+               })
+               .catch((e) => {
+                 toast.error(e.message);
+               })
+               .finally(() => setLoading(false));
+           
+             
            })
           .catch((e) => {
             console.log(e);
