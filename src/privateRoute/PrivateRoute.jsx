@@ -1,15 +1,28 @@
 import React, { use } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
+import { ClipLoader } from 'react-spinners';
 
 const PrivateRoute = ({ children }) => {
-    const { user, loading } = use(AuthContext);
+  const { user, loading } = use(AuthContext);
 
-    if(!user){
-        return <Navigate to="/login" />;
-    }
+  //   const location = useLocation();
+  //   console.log(location);
 
-    return children ;
+  // loading
+  if (loading) {
+    return (
+      <div className="h-[97vh] flex items-center justify-center ">
+        <ClipLoader color="#10B981" />
+      </div>
+    );
+  }
+  
+//   if (!user) {
+//     return <Navigate to="/login" state={location.pathname} />;
+//   }
+
+  return children;
 };
 
 export default PrivateRoute;

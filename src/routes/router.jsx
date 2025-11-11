@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         path: "/all-crops",
         element: <AllCropsPage />,
       },
+      // {
+      //   path: "/crop/:id", 
+      //   element: <CropDetails /> Component bani-ni
+      // },
       {
         path: "/profile",
         element: (

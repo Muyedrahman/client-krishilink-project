@@ -21,12 +21,14 @@ const Navbar = () => {
     const handleSignout = () => {
       logOutFunc()
         .then(() => {
-          setLoading(false)
           toast.success("Logout Succesful");
           setUser(null);
         })
         .catch((e) => {
           toast.error(e.message);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     };
 
