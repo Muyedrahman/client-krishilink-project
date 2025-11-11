@@ -6,7 +6,7 @@ import { ClipLoader } from 'react-spinners';
 const PrivateRoute = ({ children }) => {
   const { user, loading } = use(AuthContext);
 
-  //   const location = useLocation();
+  //   const location  = useLocation();
   //   console.log(location);
 
   // loading
