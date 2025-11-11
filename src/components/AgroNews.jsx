@@ -16,7 +16,7 @@ const AgroNews = () => {
           <div className="card bg-white p-6 shadow-md hover:shadow-lg rounded-xl text-center flex-1">
             <img
               src="https://i.ibb.co.com/d4XQmchz/cow.jpg"
-              alt="Borishal Cow Farm"
+              alt="Cow Farm img"
               className="rounded-lg mb-4 h-48 w-full object-cover"
             />
             <RiSeedlingLine className="text-green-600 text-4xl mx-auto mb-2" />
@@ -35,7 +35,7 @@ const AgroNews = () => {
           <div className="card bg-white p-6 shadow-md hover:shadow-lg rounded-xl text-center flex-1">
             <img
               src="https://i.ibb.co.com/ZR5fC5WT/organic-farmar.jpg"
-              alt="Organic Fertilizer"
+              alt="Organic img"
               className="rounded-lg mb-4 h-48 w-full object-cover"
             />
             <RiNewspaperLine className="text-green-600 text-4xl mx-auto mb-2" />
@@ -55,7 +55,7 @@ const AgroNews = () => {
           <div className="card bg-white p-6 shadow-md hover:shadow-lg rounded-xl text-center flex-1">
             <img
               src="https://i.ibb.co.com/W4s8FM50/ai-image.jpg"
-              alt="AI in Agriculture"
+              alt="AI-Agri-img"
               className="rounded-lg mb-4 h-48 w-full object-cover"
             />
             <RiArticleLine className="text-green-600 text-4xl mx-auto mb-2" />
