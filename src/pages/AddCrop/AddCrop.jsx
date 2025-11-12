@@ -62,6 +62,7 @@ const AddCrop = () => {
 
 
   return (
+
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-xl mt-10">
       <h2 className="text-2xl font-bold mb-6 text-green-700">Add New Crop</h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
@@ -133,7 +134,7 @@ const AddCrop = () => {
 
         <button
           type="submit"
-          className="btn bg-green-600 text-white hover:bg-green-700 w-full"
+          className="btn bg-green-600 text-white w-full"
         >
           Add Crop
         </button>
