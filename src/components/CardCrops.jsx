@@ -16,8 +16,7 @@ const CardCrops = ({ crop }) => {
   } = crop;
 
   return (
-    <div className="card bg-base-100 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-     
+    <div className="card bg-base-100 shadow-md ">
       <figure className="h-48 overflow-hidden rounded-t-xl">
         <img
           src={image}
@@ -26,7 +25,6 @@ const CardCrops = ({ crop }) => {
         />
       </figure>
 
-      
       <div className="card-body">
         <h2 className="card-title text-lg font-semibold">{name}</h2>
         <div className="badge badge-secondary text-xs px-3 py-1 rounded-full">
@@ -45,7 +43,6 @@ const CardCrops = ({ crop }) => {
 
         <p className="line-clamp-2 text-gray-700 text-sm mt-2">{description}</p>
 
-        
         <div className="card-actions justify-end mt-4">
           <Link
             to={`/crop/${_id}`}

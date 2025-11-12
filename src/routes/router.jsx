@@ -11,6 +11,7 @@ import MyPosts from "../pages/MyPosts/MyPosts";
 import MyInterests from "../pages/MyInterests/MyInterests";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import Profile from "../pages/Profile/Profile";
+import CropDetailsPage from "../pages/CropDetails/CropDetailsPage";
 
 
 
@@ -30,10 +31,15 @@ const router = createBrowserRouter([
         element: <AllCropsPage />,
         loader: () => fetch("http://localhost:3000/crops"),
       },
-      // {
-      //   path: "/crop/:id",
-      //   element: <CropDetails /> Component bani-ni
-      // },
+      {
+        path: "/crop/:_id",
+        element: (
+          <PrivateRoute>
+            <CropDetailsPage />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:3000/crops/${params._id}`),
+      },
       {
         path: "/profile",
         element: (
