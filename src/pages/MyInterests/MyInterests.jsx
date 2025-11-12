@@ -42,33 +42,38 @@ const MyInterests = () => {
     return (
       <div className="max-w-5xl mx-auto p-6 mt-10">
         <h2 className="text-2xl font-bold mb-6 text-green-600">My Interests</h2>
+
         {loading ? (
           <p>Loading...</p>
         ) : interests.length === 0 ? (
           <p>No interests found</p>
         ) : (
-          <table className="table w-full border">
-            <thead>
-              <tr>
-                <th>Crop</th>
-                <th>Owner</th>
-                <th>Quantity</th>
-                <th>Message</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {interests.map((i) => (
-                <tr key={i._id}>
-                  <td>{i.cropName}</td>
-                  <td>{i.ownerName || "N/A"}</td>
-                  <td>{i.quantity}</td>
-                  <td>{i.message}</td>
-                  <td>{i.status}</td>
+          <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Crop</th>
+                  <th>Owner</th>
+                  <th>Quantity</th>
+                  <th>Message</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {interests.map((i, index) => (
+                  <tr key={i._id} className="hover:bg-base-200">
+                    <th>{index + 1}</th>
+                    <td>{i.cropName}</td>
+                    <td>{i.ownerName || "N/A"}</td>
+                    <td>{i.quantity}</td>
+                    <td>{i.message}</td>
+                    <td>{i.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     );
