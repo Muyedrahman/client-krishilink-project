@@ -6,7 +6,7 @@ import { Link, useLoaderData } from "react-router";
 const LatestCrops = () => {
   // 
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
 
   return (
     <section className="my-10 px-4">

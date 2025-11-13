@@ -14,7 +14,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOutFunc, setUser, loading, setLoading } =
     useContext(AuthContext);
-  console.log(user);
+    // console.log(user);
 
 
     // logOutFunc profile ar

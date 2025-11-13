@@ -12,6 +12,8 @@ import MyInterests from "../pages/MyInterests/MyInterests";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import Profile from "../pages/Profile/Profile";
 import CropDetailsPage from "../pages/CropDetails/CropDetailsPage";
+import Loding from "../pages/Loding";
+
 
 
 
@@ -25,11 +27,13 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
         loader: () => fetch("http://localhost:3000/crops"),
+        hydrateFallbackElement: <Loding />,
       },
       {
         path: "/all-crops",
         element: <AllCropsPage />,
         loader: () => fetch("http://localhost:3000/crops"),
+        hydrateFallbackElement: <Loding />
       },
       {
         path: "/crop/:_id",

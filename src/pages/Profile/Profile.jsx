@@ -49,12 +49,12 @@ const Profile = () => {
       });
 
       const data = await res.json();
-      console.log("MongoDB update:", data);
+      // console.log("MongoDB update:", data);
 
       setEditMode(false);
       alert("Profile updated successfully!");
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       alert("Failed to update profile");
     }
   };

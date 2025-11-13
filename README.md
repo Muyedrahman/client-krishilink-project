@@ -1,5 +1,6 @@
 # Krishi Network
-
+Live website link:   https://fir-krishi-project.web.app
+Client-side-repository:  https://github.com/Muyedrahman/client-krishilink-project
 
 
 
@@ -12,6 +13,5 @@
 ## Technologies Used
 
 - **Frontend:** React, Tailwind CSS, React Router, React Toastify, Swiper, axios, font-Poppins .
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
+
 - **Authentication:** Firebase Auth (Email & Google Sign-In)

@@ -22,7 +22,7 @@ const MyPosts = () => {
         );
         setCrops(myCrops);
       } catch (error) {
-        console.error(error);
+        // console.error(error);
         toast.error("Failed to load crops");
       } finally {
         setLoading(false);
@@ -40,7 +40,7 @@ const MyPosts = () => {
       setCrops(crops.filter((c) => c._id !== id));
       toast.success("Crop deleted successfully");
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       toast.error("Failed to delete crop");
     }
   };
@@ -69,7 +69,7 @@ const MyPosts = () => {
         setEditCrop(null);
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       toast.error("Failed to update crop");
     }
   };

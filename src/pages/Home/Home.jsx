@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeroSlider from '../../components/HeroSlider';
 import HowItWorks from '../../components/HowItWorks';
 import AgroNews from '../../components/AgroNews';
@@ -8,6 +8,9 @@ import LatestCrops from '../../components/LatestCrops';
 
 
 const Home = () => {
+ 
+
+
     return (
       <div>
         <section>
@@ -16,19 +19,19 @@ const Home = () => {
         <section>
           <LatestCrops />
         </section>
-
         <HowItWorks />
         <section>
           <AgroNews />
         </section>
-
         <section>
           <FeaturedFarmers />
         </section>
         <section>
           <AgroEvents />
         </section>
+      
       </div>
+      
     );
 };
 

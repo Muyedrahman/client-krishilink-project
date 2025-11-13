@@ -41,7 +41,7 @@ const Login = () => {
         navigate("/");
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         toast.error("Login failed");
       })
       .finally(() => setLoading(false));
@@ -51,12 +51,12 @@ const Login = () => {
   const handleGoogleSignin = () => {
     signInWithEmailFunc()
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setLoading(false);
         toast.success("Google Login Success");
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         toast.error(e.message);
       });
   };

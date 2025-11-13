@@ -46,7 +46,7 @@ const CropDetailsPage = () => {
         setShowModal(false);
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       alert("Something went wrong!");
     } finally {
       setSubmitting(false);
@@ -65,7 +65,7 @@ const CropDetailsPage = () => {
         );
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       alert("Failed to update status");
     }
   };

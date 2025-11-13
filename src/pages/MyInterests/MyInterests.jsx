@@ -27,7 +27,7 @@ const MyInterests = () => {
           });
           setInterests(myInterests);
         } catch (error) {
-          console.error(error);
+          // console.error(error);
           toast.error("Failed to load interests");
         } finally {
           setLoading(false);

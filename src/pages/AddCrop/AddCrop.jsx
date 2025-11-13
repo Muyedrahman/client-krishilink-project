@@ -43,7 +43,7 @@ const AddCrop = () => {
          navigate("/my-posts");
        }
      } catch (error) {
-       console.error(error);
+      //  console.error(error);
        toast.error("Failed to add crop");
      }
    };

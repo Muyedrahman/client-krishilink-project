@@ -59,7 +59,7 @@ const Register = () => {
              // 2 Updat Profile
              updateProfileFunc(displayName, photoURL)
                .then(() => {
-                 console.log(res);
+                //  console.log(res);
                  //  setLoading(false);
                  toast.success("Registe succesful");
                  navigate("/");
@@ -72,8 +72,8 @@ const Register = () => {
              
            })
           .catch((e) => {
-            console.log(e);
-            console.log(e.code);
+            // console.log(e);
+            // console.log(e.code);
             if (e.code === "auth/email-already-in-use") {
               toast.error("This email is already registered.");
             } else if (e.code === "auth/invalid-email") {
@@ -104,12 +104,12 @@ const Register = () => {
   const handleGoogleRegister = () => {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
 
         toast.success("Google Login Success");
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         toast.error(e.message);
       });
   };
