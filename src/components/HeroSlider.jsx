@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// slide data 
+
 const slides = [
   {
     img: "https://i.ibb.co.com/8Dgg3r5B/slider1.jpg",

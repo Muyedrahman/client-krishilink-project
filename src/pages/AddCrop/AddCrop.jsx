@@ -52,15 +52,6 @@ const AddCrop = () => {
 
 
 
-
-
-
-
-
-
-
-
-
   return (
 
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-xl mt-10">

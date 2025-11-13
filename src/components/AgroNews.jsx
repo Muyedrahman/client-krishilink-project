@@ -1,16 +1,16 @@
 import React from 'react';
-import {       RiArticleLine, RiNewspaperLine, RiSeedlingLine } from 'react-icons/ri';
+import { RiArticleLine, RiNewspaperLine, RiSeedlingLine } from 'react-icons/ri';
 
 const AgroNews = () => {
     return (
       <div className="py-16 bg-green-50">
-        {/* Title */}
+       
         <h2 className="text-3xl font-bold text-center mb-10 flex justify-center items-center gap-2">
           <RiArticleLine className="text-green-600 text-4xl" />
           <i className="text-yellow-500">Latest Agro News & Blogs</i>
         </h2>
 
-        {/* News Cards */}
+        {/* Cards */}
         <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 px-6">
           {/* Blog 1 */}
           <div className="card bg-white p-6 shadow-md hover:shadow-lg rounded-xl text-center flex-1">

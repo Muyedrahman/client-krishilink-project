@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router";
 
 
 const LatestCrops = () => {
-  // || []
+  // 
   const data = useLoaderData();
   console.log(data);
 

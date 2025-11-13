@@ -6,6 +6,7 @@ import FeaturedFarmers from '../../components/FeaturedFarmers';
 import AgroEvents from '../../components/AgroEvents';
 import LatestCrops from '../../components/LatestCrops';
 
+
 const Home = () => {
     return (
       <div>
@@ -20,6 +21,7 @@ const Home = () => {
         <section>
           <AgroNews />
         </section>
+
         <section>
           <FeaturedFarmers />
         </section>

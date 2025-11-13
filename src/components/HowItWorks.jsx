@@ -32,7 +32,7 @@ const HowItWorks = () => {
               Post Crops or Products
             </h3>
             <p className="text-sm text-gray-600">
-              Share what you’re growing or selling — from vegetables to
+              Share what you're growing or selling — from vegetables to
               fertilizers.
             </p>
           </div>
@@ -44,7 +44,7 @@ const HowItWorks = () => {
               Connect & Collaborate
             </h3>
             <p className="text-sm text-gray-600">
-              Browse others’ posts and connect directly to trade or collaborate
+              Browse others' posts and connect directly to trade or collaborate
               easily.
             </p>
           </div>

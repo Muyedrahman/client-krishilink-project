@@ -47,8 +47,8 @@ const Footer = () => {
             <a>
               <FaSquareYoutube className="size-10" />
             </a>
-            <a>
-              <BiLogoFacebookCircle className="size-10" />
+            <a className="bg-blue-500">
+              <BiLogoFacebookCircle className="size-10 " />
             </a>
           </div>
         </nav>
